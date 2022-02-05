@@ -12,5 +12,7 @@ while(i<10):
     
     i += 1
     
+    
+    
 print(sum_score)
         
