@@ -16,7 +16,7 @@ for j in range(10):
         print(j,end=' ')
     
 
-for k in range(10):
+for k in range(len(result)):
     if k == 9:
         print(0)
     else:
