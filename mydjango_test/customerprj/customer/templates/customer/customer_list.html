@@ -1,18 +1,16 @@
-<html>
-    <head>
-        <title>Customer information DATABASE</title>
-    </head>
-    <body>
-        <div>
-            <h1>
-                <a href="">Customer information</a>
-            </h1>
+{% extends 'customer/base.html' %}
+
+{% block content %}
+    {% for customer in customers %}
+        <div class = "customer">
+            <div class = "date">
+              <p>Join_date:  {{ customer.Join_date }}</p>
+            </div>
+            {% comment %} <h1><a href="{%url 'customer_detail' pk=customer.pk %}">{{customer.title}}</a></h1> {% endcomment %}
+            <h1><a href="{%url 'customer_detail' pk=customer.pk %}">{{customer}}</a></h1>
+            <p>{{ customer.text | linebreaksbr }}</p>
         </div>
-        {% for customer in customers %}
-        {{ customer }}
-        <p>{{ customer.text|linebreaksbr }}</p>
-        {% endfor %}
-        <div>
-            
-    </body>
-</html>
+      {% empty %}
+          <p>blog글이 없습니다.</p>
+      {% endfor %}            
+{% endblock %}

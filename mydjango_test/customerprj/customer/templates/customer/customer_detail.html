@@ -1,0 +1,11 @@
+{% extends 'customer/base.html' %}
+
+{% block content %}
+    <div class="customer">
+            <div class="date">
+              <p>Join_date:  {{ customer.Join_date }} </p>
+            </div>
+            <h1>{{customer.title }}</h1>
+            <p>{{ customer.text | linebreaksbr }}</p>
+    </div>
+{% endblock %}
