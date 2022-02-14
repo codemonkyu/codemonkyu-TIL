@@ -1,11 +1,11 @@
 .page-header {
-    background-color: #0059ff;
+    background-color: #7189d8;
     margin-top: 0;
     padding: 20px 20px 20px 40px;
 }
 
-.page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
-    color: #ffffff;
+.page-header, .page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
+    color: #2317c9;
     font-size: 40pt;
     text-decoration: none;
 }
@@ -15,11 +15,11 @@
 }
 
 h1, h2, h3, h4 {
-    font-family: 'Lobster', cursive;
+    font-family: Georgia, Times, 'Times New Roman', serif, ;
 }
 
 .date {
-    color: #828282;
+    color: #8b5a46;
 }
 
 .save {
