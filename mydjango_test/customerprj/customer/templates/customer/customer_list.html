@@ -1,17 +1,18 @@
 <html>
     <head>
-        <title>Django blog</title>
+        <title>Customer information DATABASE</title>
     </head>
-      <body>
+    <body>
         <div>
             <h1>
-                <a href="">Django’s Blog</a>
+                <a href="">Customer information</a>
             </h1>
-          </div>
+        </div>
         {% for customer in customers %}
-
         {{ customer }}
-
+        <p>{{ customer.text|linebreaksbr }}</p>
         {% endfor %}
-      </body>
+        <div>
+            
+    </body>
 </html>
