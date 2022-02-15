@@ -1,9 +1,8 @@
-from asyncio.windows_events import NULL
-import email
-from django.db import models
 from django.utils import timezone
+from django.db import models
 
-class customer(models.Model):
+
+class Customer(models.Model):
     
     CATEGORY_CHOICES = {
         ('man','Male'),
@@ -13,7 +12,7 @@ class customer(models.Model):
     }
     # choice (저장값,디스플레이)
     
-    name = models.CharField(max_length = 20)
+    name = models.CharField(max_length = 20, default= 'customer_')
     birthdate = models.DateField()
     text = models.TextField(max_length = 100, default=("customer info:"))
     email = models.EmailField(max_length = 50, default=("@"))
@@ -21,8 +20,5 @@ class customer(models.Model):
     Join_date = models.DateTimeField(default=timezone.now)
     
     def __str__(self):
-        return self.name
+        return self.name + '(' + str(self.id) + ')'
     
-    def publish(self):
-        self.join_date = timezone.now()
-        self.save()

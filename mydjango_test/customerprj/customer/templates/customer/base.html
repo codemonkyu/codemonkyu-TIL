@@ -12,12 +12,15 @@
 
 <body>
   <div class="page-header">
+    <a href="{% url 'customer_new' %}" class="top-menu">
+      <span class="glyphicon glyphicon-plus"></span>
+    </a>   
     <h1><a href="{% url 'customer_list_home'%}">customer information</a></h1>
   </div>
 
   <div class ="content container">
       <div class = :"row">
-          <div class = "col-md-20">
+          <div class = "col-md-10">
             {% block content %}
             {% endblock %}
           </div>
