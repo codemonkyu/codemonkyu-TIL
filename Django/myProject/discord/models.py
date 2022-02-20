@@ -1,8 +1,7 @@
 from unicodedata import name
 from django.db import models
 from django.contrib.auth.models import User
-# Create your models here.\
-
+from datetime import timedelta
 
 
 
@@ -21,7 +20,7 @@ class Room(models.Model):
     description = models.TextField(null=True, blank=True)
     #participants =
     updated = models.DateTimeField(auto_now=True)
-    created = models.TimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True)
     
     class meta:
         ordering = ['updated','created']
@@ -34,8 +33,8 @@ class Message(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
     body = models.TextField()
-    update = models.DateTimeField(auto_now=True)
-    created = models.TimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
         return self.body[:50]

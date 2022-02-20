@@ -5,19 +5,20 @@
     <meta http-equiv ='X-UA-Compatible' content = 'IE=edge'>
     <title>discord project</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    {% comment %} <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script> {% endcomment %}
+    
 </head>
 
 <body>
   {% include 'navbar.html' %}
+
   {% if messages %}
         <ul class="messages">
             {% for message in messages %}
             <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
             {% endfor %}
         </ul>
-    {% endif %}
+  {% endif %}
+
   {% block content %}
 
   {% endblock %}

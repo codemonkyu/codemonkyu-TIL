@@ -7,7 +7,8 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 
-from .models import Room, Topic
+
+from .models import Room, Topic, Message
 from .forms import RoomForm
 
 
@@ -84,7 +85,10 @@ def home(request):
 
 def room(request, pk):
     room = Room.objects.get(id=pk)
-    context = {'room':room}
+    room_messages = room.message_set.all().order_by('-created')
+    
+    
+    context = {'room':room, 'room_messages':room_messages}
     return render(request, 'base/room.html', context)
 
 
