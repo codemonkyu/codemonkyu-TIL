@@ -13,5 +13,8 @@
       {% else %}
           <p>여자</p>
       {% endif %}
+      
+      <a class="btn btn-default" href="{% url 'customer_edit' pk=customer.pk %}">
+      <span class="glyphicon glyphicon-pencil"></span></a>
   </div>
 {% endblock %}

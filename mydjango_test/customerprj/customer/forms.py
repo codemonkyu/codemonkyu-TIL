@@ -1,4 +1,5 @@
 from django import forms
+from .models import Customer
 
 
 def min_length_2_validator(value):
@@ -12,3 +13,12 @@ class CustomerFrom(forms.Form):
     birthdate = forms.DateField()
     CHOICES = [('1','남자'),('0','여자')]
     gender = forms.ChoiceField(widget=forms.RadioSelect, choices=CHOICES)
+    
+class CustomerModelForm(forms.Form):
+    CHOICES = [('1','남자'),('0','여자')]
+    gender = forms.ChoiceField(widget=forms.RadioSelect, choices=CHOICES)
+    
+    class Meta:
+        model = Customer
+        fields = ['name','email','birthdate','gender']
+        
