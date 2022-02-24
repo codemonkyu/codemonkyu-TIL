@@ -8,8 +8,8 @@ from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 
 
-from .models import Room, Topic, Message
-from .forms import RoomForm
+from .models import Room, Topic, Message, User
+from .forms import RoomForm, UserForm
 
 
 
@@ -21,7 +21,6 @@ from .forms import RoomForm
 #     {'id':3, 'name':'Lets do django'},
 # ]
         
-
 
 
 def loginPage(request):
@@ -46,9 +45,11 @@ def loginPage(request):
     context = {'page':page}
     return render(request, 'base/login_register.html', context)
 
+
 def logoutUser(request):
     logout(request)
     return redirect('home')
+
 
 def registerPage(request):
     form = UserCreationForm()
@@ -86,6 +87,7 @@ def home(request):
     context = {'rooms':rooms, 'topics':topics, 'room_count':room_count, 'room_messages':room_messages}
     return render(request, 'base/home.html', context)
 
+
 def room(request, pk):
     room = Room.objects.get(id=pk)
     room_messages = room.message_set.all().order_by('-created')
@@ -106,21 +108,7 @@ def room(request, pk):
     return render(request, 'base/room.html', context)
 
 
-@login_required(login_url='login')
-def createRoom(request):
-    form = RoomForm()
-    if request.method == 'POST':
-        form = RoomForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('home')
-            
-    context = {'form':form}
-    return render(request, 'base/room_form.html', context)
-
-
-
-def userProfile(request,pk):
+def userProfile(request, pk):
     user = User.objects.get(id=pk)
     rooms = user.room_set.all()
     room_messages = user.message_set.all()
@@ -129,24 +117,54 @@ def userProfile(request,pk):
     return render(request, 'base/profile.html',context)
 
 
+@login_required(login_url='login')
+def createRoom(request):
+    form = RoomForm()
+    topics = Topic.objects.all()
+    if request.method == 'POST':
+        topic_name = request.POST.get('topic')
+        topic, created = Topic.objects.get_or_create(name = topic_name)
+        
+        Room.objects.create(
+            host=request.user,
+            topic=topic,
+            name=request.POST.get('name'),
+            description=request.POST.get('description'),
+        )
+        
+        # form = RoomForm(request.POST)
+        # if form.is_valid():
+        #     room = form.save(commit=False)
+        #     room.host = request.user
+        #     room.save()
+        return redirect('home')
+            
+    context = {'form':form , 'topics':topics}
+    return render(request, 'base/room_form.html', context)
+
 
 @login_required(login_url='login')
 def updateRoom(request, pk):
     room = Room.objects.get(id=pk)
     form = RoomForm(instance=room)
+    topics = Topic.objects.all()
     
     if request.user != room.host:
         return HttpResponse ("You are not allowed to Edit")
     
     
     if request.method == 'POST':
-        form = RoomForm(request.POST, instance=room)
-        if form.is_valid():
-            form.save()
-            return redirect('home')
+        topic_name = request.POST.get('topic')
+        topic, created = Topic.objects.get_or_create(name = topic_name)
+        room.name = request.POST.get('name')
+        room.topic = topic
+        room.description = request.POST.get('description')
+        room.save()
+        return redirect('home')
             
-    context = {'form':form}
+    context = {'form':form, 'topics':topics ,'room':room}
     return render(request, 'base/room_form.html', context)
+
 
 @login_required(login_url='login')
 def deleteRoom (request,pk):
@@ -161,6 +179,7 @@ def deleteRoom (request,pk):
         return redirect ('home')
     return render(request, 'base/delete.html', {'obj': room})
 
+
 @login_required(login_url='login')
 def deleteMessage (request,pk):
     message = Message.objects.get(id=pk)
@@ -173,3 +192,10 @@ def deleteMessage (request,pk):
         message.delete()
         return redirect ('home')
     return render(request, 'base/delete.html', {'obj': message})
+
+
+@login_required(login_url='login')
+def updateUser(request):
+    user = request.use
+    form = UserForm(instance=user)
+    return render(request, 'base/update_user.html', {'form':form})
