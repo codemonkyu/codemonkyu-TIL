@@ -15,7 +15,7 @@
                 </path>
               </svg>
             </a>
-            <h3>Create/update Room</h3>
+            <h3>스터디룸 생성/수정 하기</h3>
           </div>
         </div>
         <div class="layout__body">
@@ -65,12 +65,12 @@
 
            
             <div class="form__action">
-              <a class="btn btn--dark" href="index.html">Cancel</a>
-              <button class="btn btn--main" type="submit">submit</button>
+              <a class="btn btn--dark" href="{{request.META.HTTP_REFERER}}">취소</a>
+              <button class="btn btn--main" type="submit">확인</button>
             </div> 
           </form>
         </div>
       </div>
     </div>
   </main>
-{% endblock%}
+{% endblock content %}

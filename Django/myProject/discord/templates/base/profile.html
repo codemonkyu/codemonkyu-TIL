@@ -19,20 +19,20 @@
             <h3>{{user.username}}</h3>
             <p>@{{user.username}}</p>
             {% if request.user == user %}
-            <a href="{% url 'update-user' %}" class="btn btn--main btn--pill">Edit Profile</a>
+            <a href="{% url 'update-user' %}" class="btn btn--main btn--pill">프로필 수정하기</a>
             {% endif %}
           </div>
           <div class="profile__about">
-            <h3>About</h3>
+            <h3>소개</h3>
             <p>
              
             </p>
           </div>
         </div>
-
+        <hr>
         <div class="roomList__header">
           <div>
-            <h2>Rooms Hosted by "{{user.username}}"</a>
+            <h2>{{user.username}}에 의해 제작된 스터디룸</a>
             </h2>
           </div>
         </div>
@@ -46,4 +46,4 @@
     </div>
   </main>
 
-{% endblock %}
+{% endblock content %}
