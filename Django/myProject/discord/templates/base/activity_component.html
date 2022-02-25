@@ -1,3 +1,4 @@
+{% load static %}
 <div>
 <div class="activities__header">
     <h2>최근 활동</h2>
@@ -8,7 +9,7 @@
     <div class="activities__boxHeader roomListRoom__header">
       <a href="{% url 'user-profile' message.user.id %}" class="roomListRoom__author">
         <div class="avatar avatar--small">
-          <img src="https://randomuser.me/api/portraits/women/11.jpg" />
+          <img src="{% static 'images/programmer.png' %}" />
         </div>
         <p>
           @{{message.user}}
@@ -31,7 +32,7 @@
 
     </div>
     <div class="activities__boxContent">
-      <p>이 포스트에 댓글을 남김 : “<a href="{% url 'user-profile' message.room.id %}">{{message.room}}</a>”</p>
+      <p>이 포스트에 댓글을 남김 : “<a href="{% url 'room' message.room.id %}">{{message.room}}</a></p>
       <div class="activities__boxRoomContent">{{message.body}}</div>
     </div>
   </div>

@@ -10,7 +10,7 @@
         <div class="layout__box">
           <div class="layout__boxHeader">
             <div class="layout__boxTitle">
-              <h3>Login</h3>
+              <h3>로그인</h3>
             </div>
           </div>
           <div class="layout__body">
@@ -18,19 +18,17 @@
 
             <form class="form" action="" method="POST">
               {% csrf_token %}
+
               <div class="form__group form__group">
                 <label for="room_name">Username</label>
-                <input id="username" name="username" type="text" placeholder="e.g. dennis_ivy" />
+                <input id="username" name="username" type="text" placeholder="" />
               </div>
-              <div class="form__group">
-                <label for="password">Password</label>
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"
-                />
+              <div class=" form__group">
+                <label for="password">password</label>
+                <input id="password" name="password" type="password"
+                  placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" />
               </div>
+    
 
               <button class="btn btn--main" type="submit">
                 <svg
@@ -49,12 +47,12 @@
                   ></path>
                 </svg>
 
-                Login
+                로그인
               </button>
             </form>
 
             <div class="auth__action">
-              <p>Haven't signed up yet?</p>
+              <p>아직 가입하지 않았습니까?</p>
               <a href="{% url 'register' %}" class="btn btn--link">Sign Up</a>
             </div>
           </div>
@@ -65,7 +63,7 @@
         <div class="layout__box">
           <div class="layout__boxHeader">
             <div class="layout__boxTitle">
-              <h3>Register</h3>
+              <h3>회원가입</h3>
             </div>
           </div>
           <div class="layout__body">
@@ -81,16 +79,6 @@
               </div>
               {% endfor %}
 
-              <div class="form__group">
-                <label for="password">Password</label>
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"
-                />
-              </div>
-
               <button class="btn btn--main" type="submit">
                 <svg
                   version="1.1"
@@ -108,13 +96,13 @@
                   ></path>
                 </svg>
 
-                Register
+                회원가입
               </button>
             </form>
 
             <div class="auth__action">
-              <p>Already signed up yet?</p>
-              <a href="{% url 'register' %}" class="btn btn--link">Sign Up</a>
+              <p>이미 가입했습니까?</p>
+              <a href="{% url 'login' %}" class="btn btn--link">login</a>
             </div>
           </div>
         </div>

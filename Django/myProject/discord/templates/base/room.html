@@ -1,5 +1,5 @@
 {% extends 'main.html' %}
-
+{% load static %}
 {% block content %}
 <main class="profile-page layout layout--2">
   <div class="container">
@@ -56,17 +56,20 @@
             <h3>{{room.name}}</h3>
             <span>{{room.created|timesince}} ago</span>
           </div>
+          <br>
           <div class="room__hosted">
             <p>Hosted By</p>
             <a href="{% url 'user-profile' room.host.id %}" class="room__author">
               <div class="avatar avatar--small">
-                <img src="{{room.host.avatar.url}}" />
+                <img src="{% static 'images/programmer.png' %}" />
               </div>
               <span>@{{room.host.username}}</span>
             </a>
           </div>
-          <div class="room__details">
-           {{room.description}}
+          <div class="room__details" style="border: 1px dotted; border-radius: 5px; padding: 10px">
+         
+           내용: {{room.description}}
+         
           </div>
           <span class="room__topics">{{room.topic}}</span>
         </div>
@@ -81,7 +84,7 @@
                 <div class="thread__author">
                   <a href="{% url 'user-profile' message.user.id %}" class="thread__authorInfo">
                     <div class="avatar avatar--small">
-                      <img src="{{message.user.avatar.url}}" />
+                      <img src="{% static 'images/user.png' %}" />
                     </div>
                     <span>@{{message.user.username}}</span>
                   </a>
@@ -102,7 +105,7 @@
                 {% endif %}
               </div>
               <div class="thread__details">
-                {{message.body}}
+                "{{message.body}}"
               </div>
             </div>
             {% endfor %}
@@ -121,12 +124,12 @@
 
     <!--   Start -->
     <div class="participants">
-      <h3 class="participants__top">Participants <span>({{participants.count}} Joined)</span></h3>
+      <h3 class="participants__top">참여자 <span>({{participants.count}} Joined)</span></h3>
       <div class="participants__list scroll">
         {% for user in participants %}
         <a href="{%  url 'user-profile' user.id %}" class="participant">
           <div class="avatar avatar--medium">
-            <img src="{{user.avatar.url}}" />
+            <img src="{% static 'images/programmer.png' %}" />
           </div>
           <p>
             {{user.name}}
