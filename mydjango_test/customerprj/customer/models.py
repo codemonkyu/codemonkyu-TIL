@@ -14,6 +14,7 @@ class Customer(models.Model):
     text = models.TextField(default = "특이사항: ")
     
     
+    
     def __str__(self):
         return self.name + '(' + str(self.id) + ')'
     
