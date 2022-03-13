@@ -34,6 +34,12 @@
     height: 100%;
     object-fit: cover;
 }
+
+.feed_box {
+  background-color: white;
+  margin: 20px 0;
+  border: solid 1px gray
+}
 </style>
 
 
@@ -58,13 +64,14 @@
   </div>
 </nav>
 
-<!-- 왼쪽, 오른쪽 -->
+<!-- 전체 페이지 -->
 <div style="display: flex; flex-direction: row; text-align: center; justify-content: center; padding-top: 55px ;background: rgba(var(--d87,255,255,255),1)">
-  <div style="width: 600px; min-width:500px; height: 1000px; margin-right:300px">
-    <div style="border: solid 1px gray; background-color: white">
+  <!-- 사용자 정보 -->
+  <div style="width: 600px; min-width:500px; margin-right:300px">
+    <div class="feed_box">
       
       <div style="display: flex; flex-direction:row; align-items:center">
-      <div class="box" style="width: 60px; height: 60px">
+      <div class="box" style="width: 60px; height: 60px; margin: 0 10px">
         <img class="profile" 
         src="https://item.kakaocdn.net/do/c5c470298d527ef65eb52883f0f186c48f324a0b9c48f77dbce3a43bd11ce785">
       </div>
@@ -73,13 +80,146 @@
         </div>
       </div>
 
+      <!-- 게시물 이미지-->
+      <div>
+        <img style="width: 100%" src="http://image.auction.co.kr/itemimage/23/76/79/23767905a6.jpg">
+      </div>
 
-      <div><img style="width: 100%" src="http://image.auction.co.kr/itemimage/23/76/79/23767905a6.jpg"></div>
-      <div>아이콘 집합</div>
-      <div>댓글들</div>
-      <div>댓글입력창</div>
+      <!-- 정보 라인 -->
+      <div style="display: flex; flex-direction:row; justify-content: space-between; margin: 0 10px">
+        <div>
+          <span class="material-icons-outlined">
+            favorite_border
+          </span>
+          <span class="material-icons-outlined">
+            mode_comment
+          </span>
+          <span class="material-icons-outlined">
+            send
+          </span>
+        </div>
+        <div>
+          <span class="material-icons-outlined">
+            bookmark_border
+          </span>
+        </div>
+      </div>
+
+      <!-- 이미지 하단 정보-->
+      <div style="text-align: left; font-size: 14px; margin: 0 10px">junkyu <b>외 19명</b>이 좋아합니다.</div>
+      <div style="text-align: left; font-size: 12px; margin: 0 10px"><b>junkyu</b> 짬뽕이 최고야</div>
+
+      <!-- 댓글 -->
+      <div style="text-align: left; font-size: 12px; margin: 0 10px; margin-top:10px"><b>안철수</b> 나도~ 한입만! </div>
+      <div style="text-align: left; font-size: 12px; margin: 0 10px;"><b>김철수</b> 짬뽕이 최고지~ 나도 오늘짬뽕먹음</div>
+      
+      
+      <!-- 댓글 입력창 -->
+      <div style="border-top: solid 1px gray; margin-top:10px"></div>
+      <input type="text" class="form-control" style="box-shadow: none; border: none; outline: none" placeholder="댓글 달기...">
+    </div>
+    <div class="feed_box">
+      
+      <div style="display: flex; flex-direction:row; align-items:center">
+      <div class="box" style="width: 60px; height: 60px; margin: 0 10px">
+        <img class="profile" 
+        src="https://item.kakaocdn.net/do/c5c470298d527ef65eb52883f0f186c48f324a0b9c48f77dbce3a43bd11ce785">
+      </div>
+        <div>
+          junkyu
+        </div>
+      </div>
+
+      <!-- 게시물 이미지-->
+      <div>
+        <img style="width: 100%" src="http://image.auction.co.kr/itemimage/23/76/79/23767905a6.jpg">
+      </div>
+
+      <!-- 정보 라인 -->
+      <div style="display: flex; flex-direction:row; justify-content: space-between; margin: 0 10px">
+        <div>
+          <span class="material-icons-outlined">
+            favorite_border
+          </span>
+          <span class="material-icons-outlined">
+            mode_comment
+          </span>
+          <span class="material-icons-outlined">
+            send
+          </span>
+        </div>
+        <div>
+          <span class="material-icons-outlined">
+            bookmark_border
+          </span>
+        </div>
+      </div>
+
+      <!-- 이미지 하단 정보-->
+      <div style="text-align: left; font-size: 14px; margin: 0 10px">junkyu <b>외 19명</b>이 좋아합니다.</div>
+      <div style="text-align: left; font-size: 12px; margin: 0 10px"><b>junkyu</b> 짬뽕이 최고야</div>
+
+      <!-- 댓글 -->
+      <div style="text-align: left; font-size: 12px; margin: 0 10px; margin-top:10px"><b>안철수</b> 나도~ 한입만! </div>
+      <div style="text-align: left; font-size: 12px; margin: 0 10px;"><b>김철수</b> 짬뽕이 최고지~ 나도 오늘짬뽕먹음</div>
+      
+      
+      <!-- 댓글 입력창 -->
+      <div style="border-top: solid 1px gray; margin-top:10px"></div>
+      <input type="text" class="form-control" style="box-shadow: none; border: none; outline: none" placeholder="댓글 달기...">
+    </div>
+    <div class="feed_box">
+      
+      <div style="display: flex; flex-direction:row; align-items:center">
+      <div class="box" style="width: 60px; height: 60px; margin: 0 10px">
+        <img class="profile" 
+        src="https://item.kakaocdn.net/do/c5c470298d527ef65eb52883f0f186c48f324a0b9c48f77dbce3a43bd11ce785">
+      </div>
+        <div>
+          junkyu
+        </div>
+      </div>
+
+      <!-- 게시물 이미지-->
+      <div>
+        <img style="width: 100%" src="http://image.auction.co.kr/itemimage/23/76/79/23767905a6.jpg">
+      </div>
+
+      <!-- 정보 라인 -->
+      <div style="display: flex; flex-direction:row; justify-content: space-between; margin: 0 10px">
+        <div>
+          <span class="material-icons-outlined">
+            favorite_border
+          </span>
+          <span class="material-icons-outlined">
+            mode_comment
+          </span>
+          <span class="material-icons-outlined">
+            send
+          </span>
+        </div>
+        <div>
+          <span class="material-icons-outlined">
+            bookmark_border
+          </span>
+        </div>
+      </div>
+
+      <!-- 이미지 하단 정보-->
+      <div style="text-align: left; font-size: 14px; margin: 0 10px">junkyu <b>외 19명</b>이 좋아합니다.</div>
+      <div style="text-align: left; font-size: 12px; margin: 0 10px"><b>junkyu</b> 짬뽕이 최고야</div>
+
+      <!-- 댓글 -->
+      <div style="text-align: left; font-size: 12px; margin: 0 10px; margin-top:10px"><b>안철수</b> 나도~ 한입만! </div>
+      <div style="text-align: left; font-size: 12px; margin: 0 10px;"><b>김철수</b> 짬뽕이 최고지~ 나도 오늘짬뽕먹음</div>
+      
+      
+      <!-- 댓글 입력창 -->
+      <div style="border-top: solid 1px gray; margin-top:10px"></div>
+      <input type="text" class="form-control" style="box-shadow: none; border: none; outline: none" placeholder="댓글 달기...">
     </div>
   </div>
+
   <div style="width:  400px; height: 1000px; background: blue; position:fixed ;left: 62%">
     오른쪽
   </div>
