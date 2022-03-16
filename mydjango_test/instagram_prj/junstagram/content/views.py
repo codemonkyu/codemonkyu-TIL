@@ -6,11 +6,12 @@ from .models import Feed
 
 class Main(APIView):
     def get(self, request):
-        feed_list = Feed.objects.all() #이게 몰 뜻함? select * from content_feed;
+        feed_list = Feed.objects.all().order_by('-id')
         
-    
-        context={'feed_list':feed_list}
-        return render(request, "junstagram/main.html", context)
+        #이게 몰 뜻함? select * from content_feed;
+        
+
+        return render(request, "junstagram/main.html", context=dict(feeds=feed_list))
 
 
 
