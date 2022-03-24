@@ -312,9 +312,9 @@
     </div> 
       <div style="border-left: solid 1px gray">
           <div>
-            글 입력하는 곳
+            <textarea class="form-control" style="width: 270p; height: 400px; exampleFormControlTextarea1" rows="3"></textarea>
           </div>
-          <button>
+          <button class="btn btn-primary" type="submit">
             공유하기
           </button>
       </div> 
@@ -335,6 +335,16 @@
       overflow: 'hidden'
     })
   })
+
+ $('#feed_create_button').click(function(){
+   alert("공유하기 눌렀다.");
+
+ });
+
+
+
+
+
 
   $('.img_upload_space')
     .on("dragover", dragOver)
