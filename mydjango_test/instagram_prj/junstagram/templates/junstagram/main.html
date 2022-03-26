@@ -15,8 +15,12 @@
     rel="stylesheet">
 
   <!-- jquery link-->
-  <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
+  
+  <!-- meta -->
+  <meta name="_csrf" th:content="${_csrf.token}">
+  <meta name="_csrf_header" th:content="${_csrf.headerName}">
 
   <title> 인스타그램 만들어보자 </title>
 
@@ -67,6 +71,9 @@
   padding: 10px;
 }
 </style>
+
+
+
 
 
 </head>
@@ -314,7 +321,7 @@
           <div>
             <textarea id="input_feed_content" class="form-control" style="width: 270p; height: 400px; exampleFormControlTextarea1" rows="3"></textarea>
           </div>
-          <button class="btn btn-primary" type="submit">
+          <button id="feed_create_button" type="button" class="btn btn-primary" style="width: 100%;">
             공유하기
           </button>
       </div> 
@@ -325,10 +332,11 @@
 <!-- jquery -->
 <!--js, jQuery 등 문장이 끝날 때 세미콜론을 해줘도 되고 안해줘도 된다.-->
 <script>
+  
 
   let files;
 
-  $('#nav_bar_add_box').click(function () {
+$('#nav_bar_add_box').click(function () {
     $("#first_modal").css({
       display: 'flex'
     });
@@ -339,14 +347,15 @@
     })
   })
 
-  $('#feed_create_button').click(function(){
-   alert("공유하기 눌렀다.");
-   
-   let image = files[0].name;
-   let file = files;
-   let content = $('#input_feed_content').val();
-   let user_id = "junkyu"
-   let profile_image = "https://item.kakaocdn.net/do/c5c470298d527ef65eb52883f0f186c48f324a0b9c48f77dbce3a43bd11ce785";
+
+$('#feed_create_button').click(function(){
+  alert("공유하기 눌렀다.");
+  
+  let image = files[0].name;
+  let file = files;
+  let content = $('#input_feed_content').val();
+  let user_id = "junkyu"
+  let profile_image = "https://item.kakaocdn.net/do/c5c470298d527ef65eb52883f0f186c48f324a0b9c48f77dbce3a43bd11ce785";
 
    
   let fd = new FormData();
@@ -356,34 +365,30 @@
   fd.append('content', content);
   fd.append('user_id', user_id);
   fd.append('profile_image', profile_image);
-
-
-
-
-   $.ajax({
+  
+ 
+  $.ajax({
     url: "/content/upload",
     data: fd,
     method: "POST",
     processData: false,
     contentType: false,
-    success: function (data){
+    success: function(data) {
         console.log("성공");
-     },
-    error: function (request, status, error) {
+    },
+
+    error: function(request, status, error) {
       console.log("에러")
     },
     complete:function() {
       console.log("완료");
     }
-    
 
+  });
+     
+}); 
 
-    });
-
-
- }); 
-
-  $('.img_upload_space')
+$('.img_upload_space')
     .on("dragover", dragOver)
     .on("dragleave", dragOver)
     .on("drop", uploadFiles);
@@ -442,6 +447,7 @@
         return;
     }
   }
+
 </script>
 
 
