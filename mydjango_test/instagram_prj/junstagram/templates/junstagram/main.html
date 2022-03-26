@@ -15,15 +15,17 @@
     rel="stylesheet">
 
   <!-- jquery link-->
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 
-  
-  <!-- meta -->
-  <meta name="_csrf" th:content="${_csrf.token}">
-  <meta name="_csrf_header" th:content="${_csrf.headerName}">
 
   <title> 인스타그램 만들어보자 </title>
 
+  <!-- django csrf 보안 해결-->
+  <script>
+    $.ajaxSetup({
+      headers: { "X-CSRFToken": '{{csrf_token}}' }
+    });
+  </script>
 
   <!--css 적용-->
 <style>
@@ -349,44 +351,43 @@ $('#nav_bar_add_box').click(function () {
 
 
 $('#feed_create_button').click(function(){
-  alert("공유하기 눌렀다.");
-  
-  let image = files[0].name;
-  let file = files;
-  let content = $('#input_feed_content').val();
-  let user_id = "junkyu"
-  let profile_image = "https://item.kakaocdn.net/do/c5c470298d527ef65eb52883f0f186c48f324a0b9c48f77dbce3a43bd11ce785";
+    alert("공유하기 눌렀다.");
+    
+    let image = files[0].name;
+    let file = files;
+    let content = $('#input_feed_content').val();
+    let user_id = "junkyu"
+    let profile_image = "https://item.kakaocdn.net/do/c5c470298d527ef65eb52883f0f186c48f324a0b9c48f77dbce3a43bd11ce785";
 
-   
-  let fd = new FormData();
+    
+    let fd = new FormData(); 
 
-  fd.append('file', file);
-  fd.append('image', image);
-  fd.append('content', content);
-  fd.append('user_id', user_id);
-  fd.append('profile_image', profile_image);
-  
- 
-  $.ajax({
-    url: "/content/upload",
-    data: fd,
-    method: "POST",
-    processData: false,
-    contentType: false,
-    success: function(data) {
-        console.log("성공");
-    },
+    fd.append('file', file);
+    fd.append('image', image);
+    fd.append('content', content);
+    fd.append('user_id', user_id);
+    fd.append('profile_image', profile_image);
+    
+    $.ajax({
+      url: "/content/upload",
+      data: fd,
+      method: "POST",
+      processData: false,
+      contentType: false,
+      success: function(data) {
+          console.log("성공");
+      },
 
-    error: function(request, status, error) {
-      console.log("에러")
-    },
-    complete:function() {
-      console.log("완료");
-    }
+      error: function(request, status, error) {
+        console.log("에러")
+      },
+      complete:function() {
+        console.log("완료");
+      }
+
+    });
 
   });
-     
-}); 
 
 $('.img_upload_space')
     .on("dragover", dragOver)
