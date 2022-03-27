@@ -23,6 +23,9 @@
   <!-- django csrf 보안 해결-->
   {% csrf_token %}
 
+  <!--static-->
+  {% load static %}
+
 
   <!--css 적용-->
 <style>
@@ -118,7 +121,7 @@
 
           <!-- 게시물 이미지-->
           <div>
-            <img style="width: 100%" src="{{ feed.image }}">
+            <img style="width: 100%" src="{% get_media_prefix %}{{ feed.image }}">
           </div>
 
           <!-- 정보 라인 -->
@@ -377,6 +380,7 @@ $('#feed_create_button').click(function(){
           },
           complete: function() {
             console.log("완료");
+            location.replace("/main");
           }
       });
      
