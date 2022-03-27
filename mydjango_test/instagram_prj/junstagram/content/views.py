@@ -1,21 +1,19 @@
 
-import profile
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import Feed
+from content.models import Feed
 import os
 from junstagram.settings import MEDIA_ROOT
 from uuid import uuid4
-import chunk
+
 
 class Main(APIView):
     def get(self, request):
         feed_list = Feed.objects.all().order_by('-id')
         
         #이게 몰 뜻함? select * from content_feed;
-        
-
+    
         return render(request, "junstagram/main.html", context=dict(feeds=feed_list))
 
 
@@ -24,7 +22,7 @@ class UploadFeed(APIView):
     def post(self, request):
         
         #파일 불러오기 
-        file = request.FILES.get('file')
+        file = request.FILES['file']
         uuid_name = uuid4().hex
         save_path = os.path.join(MEDIA_ROOT, uuid_name)
         
