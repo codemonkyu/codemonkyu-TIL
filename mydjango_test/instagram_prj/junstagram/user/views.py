@@ -40,13 +40,13 @@ class Login(APIView):
         
         user = User.objects.filter(email=email).first()
         
-        if user in None:
-            return Response(status=404, data=dict(message="로그인정보가 정확하지 않습니다."))
+        if user is None:
+            return Response(status=400, data=dict(message="로그인정보가 정확하지 않습니다."))
         
         if user.check_password(password):
             #로그인을 했다. 세션 or 쿠키
-            return responses(status=200)
+            return Response(status=200)
         else:
-            return responses(status=400, data=dict(message="로그인정보가 잘못되었습니다."))
+            return Response(status=400, data=dict(message="로그인정보가 정확하지 않습니다."))
         
         
