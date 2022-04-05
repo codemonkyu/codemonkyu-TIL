@@ -13,6 +13,9 @@ class Main(APIView):
         feed_list = Feed.objects.all().order_by('-id')
         
         #이게 몰 뜻함? select * from content_feed;
+
+        print('로그인한 사용자:', request.session['email'])
+    
     
         return render(request, "junstagram/main.html", context=dict(feeds=feed_list))
 

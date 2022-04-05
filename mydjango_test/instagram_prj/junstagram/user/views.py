@@ -45,6 +45,8 @@ class Login(APIView):
         
         if user.check_password(password):
             #로그인을 했다. 세션 or 쿠키
+            request.session['email'] = email
+                    
             return Response(status=200)
         else:
             return Response(status=400, data=dict(message="로그인정보가 정확하지 않습니다."))
