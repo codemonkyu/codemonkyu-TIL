@@ -1,4 +1,5 @@
 
+import email
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -6,18 +7,23 @@ from content.models import Feed
 import os
 from junstagram.settings import MEDIA_ROOT
 from uuid import uuid4
-
-
+from user.models import User
+ 
 class Main(APIView):
     def get(self, request):
         feed_list = Feed.objects.all().order_by('-id')
-        
-        #이게 몰 뜻함? select * from content_feed;
-
         print('로그인한 사용자:', request.session['email'])
-    
-    
-        return render(request, "junstagram/main.html", context=dict(feeds=feed_list))
+        
+        email = request.session['email']
+        if email is None:
+            return render(request, "user/login.html")
+        
+        
+        user = User.objects.filter(email=email).first()
+        if user is None:
+            return render(request, "user/login.html")
+        
+        return render(request, "junstagram/main.html", context=dict(feeds=feed_list, user=user))
 
 
 

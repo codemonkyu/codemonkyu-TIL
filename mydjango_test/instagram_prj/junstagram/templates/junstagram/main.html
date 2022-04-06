@@ -83,19 +83,29 @@
 
 
 <body>
- 
+<div>
+   {{ user.email }}
+   {{ user.nickname }}
+   {{ user.name }}
+   {{ user.profile_image }}
+</div>
+
 <!-- 상단 내비게이션 바 -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom" style="position: fixed; width: 100%">
   <div class="container-fluid" style="justify-content: space-between; flex-wrap: nowrap; min-width: 1000px">
     <img style="height: 30px; object-fit: contain"
          src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png">
     <input class="form-control me-2" style="width: 400px" type="search" placeholder="Search" aria-label="Search">
-    <div>
-      <span class="material-icons">home</span>
+    <div style="display: flex">
+      <span class="material-icons" style="padding-right: 10px">home</span>
       <span class="material-icons-outlined">send</span>
-      <span id="nav_bar_add_box" class="material-icons-outlined">add_box</span>
+      <span id="nav_bar_add_box" style="padding-right: 10px" class="material-icons-outlined">add_box</span>
       <span class="material-icons-outlined">explore</span>
       <span class="material-icons-outlined">favorite_border</span>
+      <div class="box" style="width: 70px; height: 70px ">
+        <img class="profile" 
+        src="https://item.kakaocdn.net/do/c5c470298d527ef65eb52883f0f186c48f324a0b9c48f77dbce3a43bd11ce785">
+      </div>
     </div>
   </div>
 </nav>
@@ -173,10 +183,10 @@
               </div>
               <div style="margin-left: 10px; text-align:left">
                 <div style="font-weight: bold">
-                  junkyu
+                   {{ user.nickname }}
                 </div>
                 <div style="color: gray;">
-                  lee jun kyu
+                   {{ user.name }}
                 </div>
               </div>
             </div>
