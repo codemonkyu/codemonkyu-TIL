@@ -52,3 +52,6 @@ class UploadFeed(APIView):
        
         return Response(status=200)
 
+class Profile(APIView):
+    def get(self, request):
+        return render(request, 'content/profile.html')

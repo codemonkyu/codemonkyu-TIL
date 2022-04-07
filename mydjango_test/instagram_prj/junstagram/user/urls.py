@@ -15,12 +15,12 @@ Including another URLconf
 """
 
 from django.urls import path
-from user.views import Join, Login
+from user.views import Join, Login, LogOut
 
 urlpatterns = [
     path('join', Join.as_view()),
-    path('login', Login.as_view())
-
+    path('login', Login.as_view()),
+    path('logout', LogOut.as_view())
 ]
 
 

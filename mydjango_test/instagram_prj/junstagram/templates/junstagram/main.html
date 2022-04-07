@@ -98,17 +98,30 @@
     <input class="form-control me-2" style="width: 400px" type="search" placeholder="Search" aria-label="Search">
     <div style="display: flex">
       <span class="material-icons" style="padding-right: 10px">home</span>
-      <span class="material-icons-outlined">send</span>
       <span id="nav_bar_add_box" style="padding-right: 10px" class="material-icons-outlined">add_box</span>
-      <span class="material-icons-outlined">explore</span>
-      <span class="material-icons-outlined">favorite_border</span>
-      <div class="box" style="width: 70px; height: 70px ">
-        <img class="profile" 
-        src="https://item.kakaocdn.net/do/c5c470298d527ef65eb52883f0f186c48f324a0b9c48f77dbce3a43bd11ce785">
+
+      <!-- 로그인 이미지 -->
+      <div class="dropdown">
+        <a class="dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+         
+          <div class="box" style="width: 25px; height: 35px">
+            <img class="profile" 
+            src="https://item.kakaocdn.net/do/c5c470298d527ef65eb52883f0f186c48f324a0b9c48f77dbce3a43bd11ce785">
+          </div>
+
+        </a >
+
+        <ul style="left:-158px" class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+          <li><a class="dropdown-item" href="#">프로필</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="/user/logout">로그아웃</a></li>
+        </ul>
+
       </div>
     </div>
   </div>
 </nav>
+
 
 <!-- 전체 페이지 -->
 <div style="display: flex; flex-direction: row; text-align: center; justify-content: center; padding-top: 55px ;background: rgba(var(--d87,255,255,255),1)">

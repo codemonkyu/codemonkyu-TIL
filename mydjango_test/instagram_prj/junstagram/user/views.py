@@ -52,3 +52,12 @@ class Login(APIView):
             return Response(status=400, data=dict(message="로그인정보가 정확하지 않습니다."))
         
         
+        
+class LogOut(APIView):
+    def get(self, request):
+        request.session.flush() #flush() session을 지워준다.
+        return render(request, "user/login.html")
+        
+        
+        
+        
