@@ -1,6 +1,7 @@
 
 import email
 from django.shortcuts import render
+from matplotlib.style import context
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from content.models import Feed
@@ -54,4 +55,16 @@ class UploadFeed(APIView):
 
 class Profile(APIView):
     def get(self, request):
-        return render(request, 'content/profile.html')
+        
+        email = request.session['email']
+        if email is None:
+            return render(request, "user/login.html")
+        
+        
+        user = User.objects.filter(email=email).first()
+        if user is None:
+            return render(request, "user/login.html")
+        
+        return render(request, 'content/profile.html', context=dict(user=user))
+    
+    
