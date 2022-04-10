@@ -1,4 +1,3 @@
-
 import email
 from django.shortcuts import render
 from matplotlib.style import context
