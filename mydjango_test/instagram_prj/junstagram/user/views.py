@@ -68,6 +68,7 @@ class UploadProfile(APIView):
         
         #파일 불러오기 
         file = request.FILES['file']
+        email = request.data.get('email')
         
         uuid_name = uuid4().hex
         save_path = os.path.join(MEDIA_ROOT, uuid_name)
@@ -78,8 +79,8 @@ class UploadProfile(APIView):
         
         
         profile_image = uuid_name
-        emai = request.data.get('email')
         
+    
         user = User.objects.filter(email=email).first()
         
         user.profile_image = profile_image

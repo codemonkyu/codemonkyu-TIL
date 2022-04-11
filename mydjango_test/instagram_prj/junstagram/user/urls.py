@@ -15,8 +15,7 @@ Including another URLconf
 """
 
 from django.urls import path
-from user.views import UploadProfile
-from user.views import Join, Login, LogOut
+from user.views import Join, Login, LogOut, UploadProfile
 
 urlpatterns = [
     path('join', Join.as_view()),

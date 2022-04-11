@@ -55,12 +55,14 @@ class UploadFeed(APIView):
 class Profile(APIView):
     def get(self, request):
         
-        email = request.session['email']
+        email = request.session.get('email', None)
+        
         if email is None:
             return render(request, "user/login.html")
         
         
         user = User.objects.filter(email=email).first()
+        
         if user is None:
             return render(request, "user/login.html")
         
