@@ -1,3 +1,7 @@
+from optparse import Values
+from unittest import result
+
+
 a, b, *c = (0,1,3,4,5,6)
 
 print(a)
@@ -31,4 +35,18 @@ inventory = {"메로나": [300, 20],
               "죠스바": [250, 100]}
 
 print(inventory["메로나"][1], "개")
+
+icecream = {'탱크보이': 1200, '폴라포': 1200, '빵빠레': 1800, '월드콘': 1500, '메로나': 1000}
+ice = list(icecream.keys())
+ice2 = list(icecream.values())
+ice3 = sum(icecream.values())
+print(ice)
+print(ice2)
+print(ice3)
+
+# zip 과 dict 
+keys = ("iphone","samsung","galaxy","apple")
+Vals = (3000, 2000, 1000, 40000)
+result = dict(zip(keys, Vals))
+print(result)
 
