@@ -1,5 +1,8 @@
 ## for 문 
 
+from curses.ascii import isupper
+
+
 for i in ["A", "B", "C"]:
     b = i.lower()
 
@@ -52,3 +55,16 @@ for i in 리스트:
     if (i % 3 == 0) and (i < 20):
         print(i)
         
+#154
+리스트 = ["I", "study", "python", "language", "!"]
+for i in 리스트:
+    if str(i) >= str(3):
+        print(i)
+    elif len(i) >= 3:
+        print(i)  
+        
+#155
+리스트 = ["A", "b", "c", "D"]
+for i in 리스트:
+    if i.isupper():
+        print(i)
