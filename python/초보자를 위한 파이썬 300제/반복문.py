@@ -1,8 +1,4 @@
 ## for 문 
-
-from curses.ascii import isupper
-
-
 for i in ["A", "B", "C"]:
     b = i.lower()
 
@@ -67,4 +63,28 @@ for i in 리스트:
 리스트 = ["A", "b", "c", "D"]
 for i in 리스트:
     if i.isupper():
+        print(i)
+        
+#156
+리스트 = ["A", "b", "c", "D"]
+for i in 리스트:
+    if not i.isupper():
+        print(i)
+        
+#157
+리스트 = ['dog', 'cat', 'parrot']
+for i in 리스트:
+    print(i[0].upper() + i[1:])
+
+#158
+리스트 = ['hello.py', 'ex01.py', 'intro.hwp']
+for i in 리스트:
+    j = i.split(".")
+    print(j[0])
+    
+#159
+리스트 = ['intra.h', 'intra.c', 'define.h', 'run.py']
+for i in 리스트:
+    j = i.split(".")
+    if j[1] == "h":
         print(i)
