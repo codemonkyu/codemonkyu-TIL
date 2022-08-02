@@ -99,3 +99,11 @@ for i in 리스트:
 #161 for & range
 for i in range(2002, 2051, 4):
     print(i)
+    
+#163
+for i in range(3, 31, 3):
+    print(i)
+    
+#166 f스트링사용
+for i in range(1, 10):
+    print(f'3x{i} =', i * 3)
