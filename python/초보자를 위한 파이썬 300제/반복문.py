@@ -107,3 +107,24 @@ for i in range(3, 31, 3):
 #166 f스트링사용
 for i in range(1, 10):
     print(f'3x{i} =', i * 3)
+    
+    
+#168 
+j = 0
+for i in range(1, 11):
+    j += i
+print(f'합 : {j}')
+
+#169 홀수만
+j = 0
+for i in range(1, 11, 2):
+    j += i
+print(f'합 : {j}')
+
+#170 곱하기
+j = 1
+for i in range(1, 11):
+    j *= i
+    print(f'{j}')
+    
+#171 len함수
