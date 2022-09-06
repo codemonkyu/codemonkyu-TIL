@@ -126,7 +126,7 @@ j = 1
 for i in range(1, 11):
     j *= i
     print(f'{j}')
-    
+
 #171 len함수
 price_list = [32100, 32150, 32000, 32500]
 for i in range(len(price_list)):
@@ -139,3 +139,6 @@ for i, data in enumerate(price_list):
 
 
 #173
+price_list = [32340, 32310, 32310, 32320]
+for i, data in enumerate(price_list):
+    print(price_list[i])
